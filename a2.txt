@@ -1,0 +1,795 @@
+Script started on 2021-09-30 23:41:22+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="80" LINES="24"]
+
+-----------------Question 1:----------------------
+
+Number of unique customers: 1502381
+]0;kormanik@f6linuxA4: ~/a2[01;32mkormanik@f6linuxA4[00m:[01;34m~/a2[00m$ cut -f 2 ../amazon_reviews_us_Books_v1_02.tsv | sort | uniq |wc -l
+1502381
+
+Number of unique product ids: 779734
+]0;kormanik@f6linuxA4: ~/a2[01;32mkormanik@f6linuxA4[00m:[01;34m~/a2[00m$ cut -f 4 ../amazon_reviews_us_Books_v1_02.tsv | sort | uniq |wc -l
+779734
+
+Number of unique product titles: 713712
+]0;kormanik@f6linuxA4: ~/a2[01;32mkormanik@f6linuxA4[00m:[01;34m~/a2[00m$ cut -f 6 ../amazon_reviews_us_Books_v1_02.tsv | sort | uniq |wc -l
+713712
+
+The number of unique titles and unique product ids are different.
+
+
+
+
+-----------------Question 2:----------------------
+]0;kormanik@f6linuxA4: ~/a2[01;32mkormanik@f6linuxA4[00m:[01;34m~/a2[00m$ cd
+]0;kormanik@f6linuxA4: ~[01;32mkormanik@f6linuxA4[00m:[01;34m~[00m$ cd ws3
+]0;kormanik@f6linuxA4: ~/ws3[01;32mkormanik@f6linuxA4[00m:[01;34m~/ws3[00m$ head -100 customerids.txt > ../a2/100customers.txt
+]0;kormanik@f6linuxA4: ~/ws3[01;32mkormanik@f6linuxA4[00m:[01;34m~/ws3[00m$ head -100 productids.txt > ../a2/100products.txt
+]0;kormanik@f6linuxA4: ~/ws3[01;32mkormanik@f6linuxA4[00m:[01;34m~/ws3[00m$ cd 
+
+Get 100 customers and 100 products from the files that were created during WS3
+
+
+]0;kormanik@f6linuxA4: ~[01;32mkormanik@f6linuxA4[00m:[01;34m~[00m$ cd a2
+]0;kormanik@f6linuxA4: ~/a2[01;32mkormanik@f6linuxA4[00m:[01;34m~/a2[00m$ ls
+100customers.txt  100products.txt  a2.txt
+]0;kormanik@f6linuxA4: ~/a2[01;32mkormanik@f6linuxA4[00m:[01;34m~/a2[00m$ mkdir CUSTOMERS
+]0;kormanik@f6linuxA4: ~/a2[01;32mkormanik@f6linuxA4[00m:[01;34m~/a2[00m$ mkdir PRODUCTS
+]0;kormanik@f6linuxA4: ~/a2[01;32mkormanik@f6linuxA4[00m:[01;34m~/a2[00m$ for i in `cat 100customers.txt`; do egrep $i ../amazon_reviews_us_Books_v1_02.tsv | cut -f 8,9 >> ~/a2/CUSTOMERS/$i.txt; echo "$i"; done
+customer_id
+12076615
+12703090
+12257412
+50732546
+51964897
+31048862
+53000124
+29732693
+48541186
+15280864
+24209213
+52253037
+27925116
+15005044
+52534781
+26217071
+37684582
+45232107
+15437121
+52157117
+50732546
+15865974
+13503149
+51917717
+12070100
+14808839
+30675785
+31863302
+12068874
+12073911
+53043498
+12360098
+41549714
+49355567
+25947084
+16234962
+12066099
+12071429
+52818300
+52653080
+42098585
+50057481
+25701781
+43628635
+24597472
+51303136
+29963330
+23972711
+52393676
+24853483
+37527885
+50913245
+12071875
+39154110
+13585650
+12068140
+41582461
+12067919
+32533252
+12517857
+50732546
+40392769
+37441931
+39487575
+38233919
+37217168
+20243836
+23711977
+18755160
+52714863
+38375667
+50774468
+50055196
+16300118
+50913245
+50036420
+31646732
+12072415
+51174957
+16571810
+12075425
+14278448
+12281899
+12069570
+34103525
+37811500
+12256167
+49441053
+52811948
+26274218
+50122160
+12075168
+13499553
+24104879
+50122160
+36259344
+27565968
+29192266
+14278448
+]0;kormanik@f6linuxA4: ~/a2[01;32mkormanik@f6linuxA4[00m:[01;34m~/a2[00m$ for i in `cat 100products.txt`; do egrep $i ../amazon_reviews_us_Books_v1_02.tsv | cut -f 8,9 >> ~/a2/PRODUCTS/$i.txt; echo "$i"; done
+product_id
+0385730586
+0811828964
+1844161560
+0373836635
+0262181533
+0316769487
+0805076069
+1581603681
+0300108834
+0446531081
+0976822105
+1580085695
+0029148510
+1592285570
+0811848833
+0782144276
+0375757996
+013146308X
+0375701907
+141378240X
+045121692X
+0814470734
+1585424307
+0385324162
+0471485853
+1558746250
+0375826688
+0373484372
+0060727799
+0060839880
+0971525331
+0374281580
+0312853165
+0060820810
+0060513926
+0060875410
+1595409475
+1933570598
+0316159727
+1405001380
+0743454545
+0297844091
+1560326891
+0345371984
+1402545355
+1594200459
+0968925901
+0312873077
+0072229918
+0373513194
+0792279433
+067983883X
+1904754724
+0671035665
+0972688862
+0786868821
+0060875410
+0553280074
+0679642730
+097150072X
+0373713045
+0735544670
+0743226674
+0060731192
+0761563601
+1872197108
+015602943X
+0061091316
+0515116475
+030733855X
+0684848171
+0345445872
+1893794008
+0471678694
+0879978929
+051509479X
+0865164517
+073561962X
+0811814726
+3540236058
+0060920475
+0671884484
+1568332319
+0446673544
+0674011929
+0742538168
+007142959X
+0966170229
+1400053609
+1418485748
+0787978922
+0373124953
+0738835668
+0307283658
+1931769230
+1843580349
+0764152327
+0439358078
+0312332688
+]0;kormanik@f6linuxA4: ~/a2[01;32mkormanik@f6linuxA4[00m:[01;34m~/a2[00m$ ls
+100customers.txt  100products.txt  [0m[01;34mCUSTOMERS[0m  [01;34mPRODUCTS[0m  a2.txt
+]0;kormanik@f6linuxA4: ~/a2[01;32mkormanik@f6linuxA4[00m:[01;34m~/a2[00m$ cd CUSTOMERS
+]0;kormanik@f6linuxA4: ~/a2/CUSTOMERS[01;32mkormanik@f6linuxA4[00m:[01;34m~/a2/CUSTOMERS[00m$ ls
+12066099.txt  13499553.txt  24853483.txt  37527885.txt  50122160.txt
+12067919.txt  13503149.txt  25701781.txt  37684582.txt  50732546.txt
+12068140.txt  13585650.txt  25947084.txt  37811500.txt  50774468.txt
+12068874.txt  14278448.txt  26217071.txt  38233919.txt  50913245.txt
+12069570.txt  14808839.txt  26274218.txt  38375667.txt  51174957.txt
+12070100.txt  15005044.txt  27565968.txt  39154110.txt  51303136.txt
+12071429.txt  15280864.txt  27925116.txt  39487575.txt  51917717.txt
+12071875.txt  15437121.txt  29192266.txt  40392769.txt  51964897.txt
+12072415.txt  15865974.txt  29732693.txt  41549714.txt  52157117.txt
+12073911.txt  16234962.txt  29963330.txt  41582461.txt  52253037.txt
+12075168.txt  16300118.txt  30675785.txt  42098585.txt  52393676.txt
+12075425.txt  16571810.txt  31048862.txt  43628635.txt  52534781.txt
+12076615.txt  18755160.txt  31646732.txt  45232107.txt  52653080.txt
+12256167.txt  20243836.txt  31863302.txt  48541186.txt  52714863.txt
+12257412.txt  23711977.txt  32533252.txt  49355567.txt  52811948.txt
+12281899.txt  23972711.txt  34103525.txt  49441053.txt  52818300.txt
+12360098.txt  24104879.txt  36259344.txt  50036420.txt  53000124.txt
+12517857.txt  24209213.txt  37217168.txt  50055196.txt  53043498.txt
+12703090.txt  24597472.txt  37441931.txt  50057481.txt  customer_id.txt
+
+Save a separate txt file for each customer id and product id. And keep these files in their respected directories, CUSTOMERS or PRODUCTS
+
+
+
+
+
+
+
+-----------------Questions 4,5,6:----------------------
+]0;kormanik@f6linuxA4: ~/a2[01;32mkormanik@f6linuxA4[00m:[01;34m~/a2[00m$ head -1[K200 ~/.bashrc
+# ~/.bashrc: executed by bash(1) for non-login shells.
+# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
+# for examples
+
+# If not running interactively, don't do anything
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+
+# don't put duplicate lines or lines starting with space in the history.
+# See bash(1) for more options
+HISTCONTROL=ignoreboth
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=1000
+HISTFILESIZE=2000
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
+# If set, the pattern "**" used in a pathname expansion context will
+# match all files and zero or more directories and subdirectories.
+#shopt -s globstar
+
+# make less more friendly for non-text input files, see lesspipe(1)
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+# set variable identifying the chroot you work in (used in the prompt below)
+if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
+    debian_chroot=$(cat /etc/debian_chroot)
+fi
+
+# set a fancy prompt (non-color, unless we know we "want" color)
+case "$TERM" in
+    xterm-color|*-256color) color_prompt=yes;;
+esac
+
+# uncomment for a colored prompt, if the terminal has the capability; turned
+# off by default to not distract the user: the focus in a terminal window
+# should be on the output of commands, not on the prompt
+#force_color_prompt=yes
+
+if [ -n "$force_color_prompt" ]; then
+    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+	# We have color support; assume it's compliant with Ecma-48
+	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+	# a case would tend to support setf rather than setaf.)
+	color_prompt=yes
+    else
+	color_prompt=
+    fi
+fi
+
+if [ "$color_prompt" = yes ]; then
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+else
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+fi
+unset color_prompt force_color_prompt
+
+# If this is an xterm set the title to user@host:dir
+case "$TERM" in
+xterm*|rxvt*)
+    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+    ;;
+*)
+    ;;
+esac
+
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+# colored GCC warnings and errors
+#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
+# some more ls aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+
+
+
+
+
+
+
+
+
+-----> Added this Alias for ls-latr
+# Alias to display the files in the current directory in list format and reverse
+# chronological-order
+alias l = 'ls -latr'
+
+
+-----> Added this Alias for ls -la | wc
+# Alias to display the number of files in the current directory
+alias w = 'ls -la | wc'
+
+
+
+
+
+
+
+
+
+
+
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+# enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
+]0;kormanik@f6linuxA4: ~/a2[01;32mkormanik@f6linuxA4[00m:[01;34m~/a2[00m$ cd Customers[K[K[K[K[K[K[K[KUSTOMERS
+]0;kormanik@f6linuxA4: ~/a2/CUSTOMERS[01;32mkormanik@f6linuxA4[00m:[01;34m~/a2/CUSTOMERS[00m$ w
+ 00:21:27 up 34 days, 21:11,  1 user,  load average: 0.00, 0.23, 0.51
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+kormanik pts/0    98.42.149.2      23:40    7.00s  0.07s  0.03s script a2.txt
+
+
+
+
+
+
+
+
+-----------------Question 7:----------------------
+]0;kormanik@f6linuxA4: ~/a2/CUSTOMERS[01;32mkormanik@f6linuxA4[00m:[01;34m~/a2/CUSTOMERS[00m$ ls -la | wc
+     98     875    6200
+Customer ids has 98 files. Guess I  missed 2 :(
+
+
+]0;kormanik@f6linuxA4: ~/a2/CUSTOMERS[01;32mkormanik@f6linuxA4[00m:[01;34m~/a2/CUSTOMERS[00m$ cd
+]0;kormanik@f6linuxA4: ~[01;32mkormanik@f6linuxA4[00m:[01;34m~[00m$ cd a2/PRODUCTS
+]0;kormanik@f6linuxA4: ~/a2/PRODUCTS[01;32mkormanik@f6linuxA4[00m:[01;34m~/a2/PRODUCTS[00m$ ls -la | wc
+    102     911    6449
+Product ids have over 100 files
+
+
+
+
+-----------------Question 8:----------------------
+]0;kormanik@f6linuxA4: ~/a2/PRODUCTS[01;32mkormanik@f6linuxA4[00m:[01;34m~/a2/PRODUCTS[00m$ cd
+]0;kormanik@f6linuxA4: ~[01;32mkormanik@f6linuxA4[00m:[01;34m~[00m$ cd a2/CUSTOMERS
+]0;kormanik@f6linuxA4: ~/a2/CUSTOMERS[01;32mkormanik@f6linuxA4[00m:[01;34m~/a2/CUSTOMERS[00m$ sudo apt install datamash
+[sudo] password for kormanik: 
+kormanik is not in the sudoers file.  This incident will be reported.
+]0;kormanik@f6linuxA4: ~/a2/CUSTOMERS[01;32mkormanik@f6linuxA4[00m:[01;34m~/a2/CUSTOMERS[00m$ cd
+]0;kormanik@f6linuxA4: ~[01;32mkormanik@f6linuxA4[00m:[01;34m~[00m$ wget http://ftp.gnu.org/gnu/datamash/datamash-1.3.tar.gz
+--2021-10-01 00:24:20--  http://ftp.gnu.org/gnu/datamash/datamash-1.3.tar.gz
+Resolving ftp.gnu.org (ftp.gnu.org)... 209.51.188.20, 2001:470:142:3::b
+Connecting to ftp.gnu.org (ftp.gnu.org)|209.51.188.20|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 1939375 (1.8M) [application/x-gzip]
+Saving to: ‘datamash-1.3.tar.gz’
+
+datamash-1.3.tar.gz   0%[                    ]       0  --.-KB/s               datamash-1.3.tar.gz   5%[>                   ] 105.55K   463KB/s               datamash-1.3.tar.gz  36%[======>             ] 688.15K  1.56MB/s               datamash-1.3.tar.gz  90%[=================>  ]   1.67M  2.65MB/s               datamash-1.3.tar.gz 100%[===================>]   1.85M  2.53MB/s    in 0.7s    
+
+2021-10-01 00:24:20 (2.53 MB/s) - ‘datamash-1.3.tar.gz’ saved [1939375/1939375]
+
+]0;kormanik@f6linuxA4: ~[01;32mkormanik@f6linuxA4[00m:[01;34m~[00m$ tar -xzf datamash-1.3.tar.gz
+]0;kormanik@f6linuxA4: ~[01;32mkormanik@f6linuxA4[00m:[01;34m~[00m$ cd datamash-1.3
+]0;kormanik@f6linuxA4: ~/datamash-1.3[01;32mkormanik@f6linuxA4[00m:[01;34m~/datamash-1.3[00m$ ./configure
+]0;kormanik@f6linuxA4: ~/a2/CUSTOMERS[01;32mkormanik@f6linuxA4[00m:[01;34m~/a2/CUSTOMERS[00m$ cd
+]0;kormanik@f6linuxA4: ~[01;32mkormanik@f6linuxA4[00m:[01;34m~[00m$ cd datamash-1.3
+]0;kormanik@f6linuxA4: ~/datamash-1.3[01;32mkormanik@f6linuxA4[00m:[01;34m~/datamash-1.3[00m$ for file in ~/a2/CUSTOMERS/*.txt; do ./datamash  -W ppearson 1:2 < $file >> ~/a2/customercorrelation; done
+]0;kormanik@f6linuxA4: ~/datamash-1.3[01;32mkormanik@f6linuxA4[00m:[01;34m~/datamash-1.3[00m$ sort ~/a2/customercorrelation
+
+Here is the range of the correlation:
+
+-0.039043440472152   -> Least helpful
+-0.063150897795067
+-0.08318597610276
+-0.12131979607413
+-0.16972493574494
+-0.2069072973074
+-0.25168568104359
+-0.29855172630199
+-0.48845598540601
+-0.51604684654214
+-0.75592894601845
+-0.95265921121868
+-1
+-1
+0.0079500705902259
+0.084133214894678
+0.088830355194399
+0.090116904917308
+0.11797618291019
+0.12519186748599
+0.13504126608126
+0.15381696183264
+0.16371190004495
+0.18795398727863
+0.24987454926556
+0.48507125007267
+0.48654648218418
+0.5066403971049
+0.54584172884463
+0.67859107728949
+1
+1
+1   -> Most helpful
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+
+
+-----------------Question 9:----------------------
+]0;kormanik@f6linuxA4: ~/datamash-1.3[01;32mkormanik@f6linuxA4[00m:[01;34m~/datamash-1.3[00m$ cd
+]0;kormanik@f6linuxA4: ~[01;32mkormanik@f6linuxA4[00m:[01;34m~[00m$ cd a2
+]0;kormanik@f6linuxA4: ~/a2[01;32mkormanik@f6linuxA4[00m:[01;34m~/a2[00m$ for file in ~/a2/CUSTOMERS/*.txt;  do count=0; total=0;  for i in $( awk '{ print $2; }' $file );  do total=$(echo $total+$i | bc ); ((count++));  done;  echo "scale=2; $total / $count" | bc >> ~/a2/meanHelpfulness.txt; done
+]0;kormanik@f6linuxA4: ~/a2[01;32mkormanik@f6linuxA4[00m:[01;34m~/a2[00m$ sort meanHelpfulness.txt
+
+HEre's the range of averge helpfulness score:
+
+0   -> Least helpful
+0
+0
+0
+0
+0
+0
+0
+0
+0
+1.00
+1.00
+1.00
+1.00
+1.00
+1.00
+1.00
+1.00
+1.00
+1.00
+1.00
+1.00
+1.00
+1.50
+1.77
+10.00
+10.00
+10.07
+10.50
+11.00
+11.00
+11.00
+11.19
+11.38
+11.50
+12.00
+12.36
+13.00
+13.00
+14.00
+14.79
+15.00
+16.00
+16.00
+16.00
+17.00
+18.64
+2.00
+2.00
+2.00
+2.00
+2.47
+2.50
+21.00
+22.95
+24.00
+24.00
+25.13
+25.33
+26.00
+268.00   -> Most helpful
+3.00
+3.00
+3.33
+3.50
+31.62
+39.40
+4.00
+4.00
+4.00
+4.50
+4.80
+41.20
+5.00
+5.00
+5.00
+5.00
+5.18
+5.85
+5.87
+6.00
+6.00
+6.00
+6.12
+6.20
+7.00
+7.00
+7.11
+7.32
+7.66
+8.00
+8.00
+8.00
+9.42
+
+
+
+
+
+
+
+
+
+-----------------Question 10:----------------------
+]0;kormanik@f6linuxA4: ~/a2[01;32mkormanik@f6linuxA4[00m:[01;34m~/a2[00m$ for file in ~/a2/PRODUCTS/*.txt;  do count=0; total=0;  for i in $( awk '{ print $1; }' $file );  do total=$(echo $total+$i | bc ); ((count++));  done;  echo "scale=2; $total / $count" | bc >> ~/a2/starratingMEAN.txt; done[K[K[K[K[K[K[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kfor file in ~/a2/PRODUCTS/*.txt;  do count=0; total=0;  for i in $( awk '{ print $1; }' $file );  do total=$(echo $total+$i | bc ); ((count++));  done;  echo "scale=2; $total / $count" | bc >> ~/a2/meanStarRating.txt; done[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cecho "scale=2; $total / $count" | bc >> ~/a2/meanStarRating.txt;[1P done[A[C[C[C[C[C[C[C[C[C[Cdone; echo "scale=2; $total / $count" | bc >> ~/a2/meanStarRating.txt; [1Pdone[A[C[C[C[C[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cdo total=$(echo $total+$i | bc ); ((count++)); done; echo "scale=2; $total / $count" | bc >> ~/a2/meanStarRating.txt; d[1Pone[A[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+
+
+]0;kormanik@f6linuxA4: ~/a2[01;32mkormanik@f6linuxA4[00m:[01;34m~/a2[00m$ sort meanStarRating.txt
+
+Heres the range of average star ratings:
+
+0     -> Least helpful
+2.75
+2.88
+2.89
+2.96
+3.00
+3.00
+3.00
+3.00
+3.00
+3.00
+3.11
+3.16
+3.28
+3.43
+3.43
+3.46
+3.50
+3.50
+3.59
+3.68
+3.81
+3.82
+3.83
+3.87
+3.93
+4.00
+4.00
+4.00
+4.00
+4.00
+4.00
+4.00
+4.00
+4.03
+4.07
+4.10
+4.14
+4.15
+4.16
+4.18
+4.19
+4.20
+4.22
+4.23
+4.24
+4.25
+4.26
+4.30
+4.33
+4.37
+4.38
+4.40
+4.42
+4.44
+4.44
+4.49
+4.50
+4.50
+4.50
+4.50
+4.50
+4.50
+4.50
+4.50
+4.50
+4.55
+4.55
+4.58
+4.61
+4.66
+4.66
+4.67
+4.69
+4.72
+4.75
+4.80
+4.84
+4.85
+4.92
+5.00
+5.00
+5.00
+5.00
+5.00
+5.00
+5.00
+5.00
+5.00
+5.00
+5.00
+5.00
+5.00
+5.00
+5.00
+5.00
+5.00
+5.00
+5.00    -> Most helpful
+]0;kormanik@f6linuxA4: ~/a2[01;32mkormanik@f6linuxA4[00m:[01;34m~/a2[00m$ exit
+
+Script done on 2021-10-01 01:11:45+00:00 [COMMAND_EXIT_CODE="0"]
